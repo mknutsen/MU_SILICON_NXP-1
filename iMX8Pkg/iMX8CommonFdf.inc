@@ -63,12 +63,12 @@
   #
   # Usb Support
   #
-!if $(CONFIG_USB) == TRUE
-!if $(IMX_FAMILY) == IMX8MM
+#!if $(CONFIG_USB) == TRUE
+#!if $(IMX_FAMILY) == IMX8MM
 # TODO: add Ehci package
-!else
+#!else
   INF MdeModulePkg/Bus/Pci/XhciDxe/XhciDxe.inf
-!endif
+#!endif
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
@@ -100,7 +100,7 @@
 #  INF MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe.inf
   INF MdeModulePkg/Universal/SetupBrowserDxe/SetupBrowserDxe.inf
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
-  INF MdeModulePkg/Application/UiApp/UiApp.inf
+#INF MdeModulePkg/Application/UiApp/UiApp.inf
 
   #
   # EBC
@@ -132,6 +132,11 @@
     SECTION RAW = Microsoft/OpteeClientPkg/Bin/fTpmTa/Arm64/Test/bc50d971-d4c9-42c4-82cb-343fb7f37896.ta
   }
 !endif
+
+!if $(CONFIG_FRONTPAGE) == TRUE
+!include FrontpageFdf.inc
+!endif
+
 
 [FV.FVMAIN_COMPACT]
 FvAlignment        = 8
